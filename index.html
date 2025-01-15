@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITAPP - AI-Powered Fitness Revolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">FITAPP</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#technology">Technology</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI-Powered Fitness Revolution</h1>
+            <p>Real-time form feedback. Personalized workouts. Advanced pose detection.</p>
+            <div class="hero-buttons">
+                <a href="#features" class="cta-button">Discover Features</a>
+                <a href="#technology" class="secondary-button">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/hero-image.png" alt="AI Fitness App Interface">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-camera"></i>
+                <h3>Real-time Form Analysis</h3>
+                <p>Leverage advanced AI to ensure every movement aligns with optimal form. 
+                   From squats to bench press, our pose detection analyzes 33 key body landmarks to guide you toward flawless execution.
+                </p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Personalized Workouts</h3>
+                <p>Unlock the potential of personalized fitness with tailored exercise plans that adapt to your progress and goals.
+                    Whether you're a beginner or a pro, your workout evolves with you.
+                </p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Progress Tracking</h3>
+                <p>
+                    Track every rep, set, and calorie burned with detailed analytics.
+                    Dive into comprehensive performance metrics that visualize your progress over time.
+                </p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community Features</h3>
+                <p>
+                    Be part of a thriving fitness community. 
+                    Take on exciting challenges, share your routines, and climb global leaderboards to showcase your fitness achievements.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="technology">
+        <h2>Powered by Advanced Technology</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="tech-content">
+                    <h3>MediaPipe</h3>
+                    <p>Advanced 33-point pose detection for precise movement analysis and real-time feedback.</p>
+                </div>
+                <img src="assets/mediapipe-demo.png" alt="MediaPipe Pose Detection" class="tech-image">
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="tech-content">
+                    <h3>Machine Learning</h3>
+                    <p>Neural networks trained to accurately classify exercises and detect form errors.</p>
+                </div>
+                <div class="neural-network">
+                    <div class="layer" id="input-layer">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                    <div class="layer" id="hidden-layer-1">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                    <div class="layer" id="hidden-layer-2">
+                        <div class="neuron"></div>
+                        <div class="neuron"></div>
+                    </div>
+                    <div class="layer" id="output-layer">
+                        <div class="neuron"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="tech-content">
+                    <h3>Real-time Processing</h3>
+                    <p>Instant feedback and analysis through optimized WebSocket technology.</p>
+                </div>
+                <div class="streaming-container">
+                    <div class="devices-container">
+                        <div class="device-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="stream-paths">
+                        <div class="stream-path middle-path">
+                            <div class="data-packet"></div>
+                            <div class="data-packet"></div>
+                            <div class="data-packet reverse"></div>
+                            <div class="data-packet reverse"></div>
+                        </div>
+                    
+                    </div>
+                    <div class="server-container">
+                        <div class="server-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About the Project</h2>
+        <p>
+            FITAPP is an AI-powered fitness application developed as a senior graduation project. 
+            Built with Flutter and Spring Boot, it integrates MediaPipe for 33-point pose detection and machine learning for exercise classification. 
+            Using a modular architecture, it delivers real-time feedback via WebSocket technology and stores detailed workout data securely for analytics. 
+            This project combines cutting-edge AI techniques with practical system design to provide accurate and scalable fitness tracking for real-world use.
+        </p>
+    </section>
+
+    <section id="members" class="members">
+        <div class="members-container">
+            <h2 class="members-title">Project Members</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <h3 class="member-name">Efe İlhan</h3>
+                </div>
+                <div class="member-card">
+                    <h3 class="member-name">Pelin Sude Kırlı</h3>
+                </div>
+                <div class="member-card">
+                    <h3 class="member-name">Fahrettin Ege Bilge</h3>
+                </div>
+                <div class="member-card">
+                    <h3 class="member-name">Hande Hazan Keskin</h3>
+                </div>
+                <div class="member-card">
+                    <h3 class="member-name">Birkan Cemil Abacı</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FITAPP</div>
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#technology">Technology</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
