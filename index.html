@@ -18,6 +18,7 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#technology">Technology</a>
+                <a href="#how-it-works">Technical Architecture</a>
                 <a href="#about">About</a>
             </div>
         </div>
@@ -148,6 +149,233 @@
         </div>
     </section>
 
+    <section id="how-it-works" class="how-it-works">
+        <h2>Technical Architecture & Implementation</h2>
+        <div class="workflow-container">
+            <!-- System Architecture -->
+            <div class="workflow-step">
+                <h3>System Architecture</h3>
+                <div class="technical-diagram">
+                    <div class="horizontal-flow scrollable">
+                        <div class="flow-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <p>Flutter Mobile Client</p>
+                            <small>Cross-platform UI & Camera</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <i class="fas fa-brain"></i>
+                            <p>AI Module</p>
+                            <small>MediaPipe & ML Models</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <i class="fas fa-server"></i>
+                            <p>Spring Boot Backend</p>
+                            <small>RESTful API & WebSocket</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <i class="fas fa-database"></i>
+                            <p>PostgreSQL Database</p>
+                            <small>User Data & Analytics</small>
+                        </div>
+                    </div>
+                </div>
+                <p class="technical-description">
+                    The system employs a four-tier architecture with Flutter for cross-platform mobile development, AI module for pose detection and analysis, Spring Boot for robust backend services, and PostgreSQL for data persistence.
+                </p>
+            </div>
+
+            <!-- Deployment & Integration Flow -->
+            <div class="workflow-step">
+                <h3>Deployment & Integration Flow</h3>
+                <div class="technical-diagram">
+                    <div class="horizontal-flow scrollable">
+                        <div class="flow-item">
+                            <div class="item-header">Front-End</div>
+                            <i class="fas fa-mobile-alt"></i>
+                            <p>User Interface</p>
+                            <small>Camera & Display</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <div class="item-header">MediaPipe Processor</div>
+                            <i class="fas fa-camera"></i>
+                            <p>Landmark Extraction</p>
+                            <small>33-point detection</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <div class="item-header">AI Module</div>
+                            <i class="fas fa-brain"></i>
+                            <p>Pose Detection ANN</p>
+                            <small>Classification</small>
+                        </div>
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="flow-item">
+                            <div class="item-header">Exercise Analyzer</div>
+                            <i class="fas fa-cogs"></i>
+                            <p>Heuristic Functions</p>
+                            <small>Form Analysis</small>
+                        </div>
+                    </div>
+                </div>
+                <p class="technical-description">
+                    The system processes video frames through MediaPipe for landmark extraction, which feeds into our AI module for pose detection. Based on the AI's classification, if the user is not in the correct pose, feedback is shown and the process recycles. For valid poses, the exercise analyzer processes them using heuristic functions, sending results to the front-end and saving statistics to the database.
+                </p>
+            </div>
+
+            <!-- User Interaction Flow -->
+            <div class="workflow-step">
+                <h3>User Interaction Flow</h3>
+                <div class="technical-diagram">
+                    <div class="flow-grid">
+                        <!-- First Row -->
+                        <div class="flow-row">
+                            <div class="flow-item">
+                                <i class="fas fa-plus-circle"></i>
+                                <p>Initialize Workout Configuration</p>
+                                <small>Workout planning system</small>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="flow-item">
+                                <i class="fas fa-camera"></i>
+                                <p>Initiate Video Stream Processing</p>
+                                <small>Real-time frame analysis</small>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="flow-item">
+                                <i class="fas fa-check-circle"></i>
+                                <p>Real-time Form Analysis Feedback</p>
+                                <small>Pose correction system</small>
+                            </div>
+                        </div>
+
+                        <!-- Connecting Arrow -->
+                        <div class="flow-row-connector">
+                            <div class="flow-arrow down">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+
+                        <!-- Second Row -->
+                        <div class="flow-row">
+                            <div class="flow-item">
+                                <i class="fas fa-history"></i>
+                                <p>Exercise Session Analytics</p>
+                                <small>Historical data analysis</small>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="fas fa-arrow-left"></i>
+                            </div>
+                            <div class="flow-item">
+                                <i class="fas fa-trophy"></i>
+                                <p>Gamification System Integration</p>
+                                <small>Achievement protocols</small>
+                            </div>
+                            <div class="flow-arrow">
+                                <i class="fas fa-arrow-left"></i>
+                            </div>
+                            <div class="flow-item">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Performance Metrics Visualization</p>
+                                <small>Progress tracking analytics</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Development -->
+            <div class="workflow-step">
+                <h3>Future Development</h3>
+                <div class="technical-diagram">
+                    <div class="flow-container">
+                        <div class="flow-row">
+                            <div class="flow-item wide">
+                                <div class="item-header">
+                                    <i class="fas fa-cloud"></i>
+                                    <p>Cloud Infrastructure Integration</p>
+                                </div>
+                                <div class="sub-items">
+                                    <div class="sub-item">
+                                        <i class="fas fa-server"></i>
+                                        <p>Load Distribution System</p>
+                                    </div>
+                                    <div class="sub-item">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <p>Security Protocol Enhancement</p>
+                                    </div>
+                                    <div class="sub-item">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <p>System Optimization Protocol</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="technical-description">
+                    Future implementation roadmap includes distributed cloud computing integration, enabling enhanced system scalability and computational optimization for increased user concurrency.
+                </p>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="workflow-step">
+                <h3>Tech Stack</h3>
+                <div class="tech-stack-grid">
+                    <div class="tech-stack-item">
+                        <img src="https://storage.googleapis.com/cms-storage-bucket/6a07d8a62f4308d2b854.svg" alt="Flutter">
+                        <h4>Flutter</h4>
+                        <p>Cross-platform framework for building natively compiled applications, enabling smooth UI and real-time video processing.</p>
+                    </div>
+                    <div class="tech-stack-item">
+                        <img src="https://spring.io/img/spring-2.svg" alt="Spring Boot">
+                        <h4>Spring Boot</h4>
+                        <p>Java-based framework for building production-ready applications, handling REST APIs and WebSocket connections.</p>
+                    </div>
+                    <div class="tech-stack-item">
+                        <img src="https://mediapipe.dev/images/logo.png" alt="MediaPipe">
+                        <h4>MediaPipe</h4>
+                        <p>Cross-platform framework for building multimodal ML pipelines, providing real-time pose detection and landmark tracking.</p>
+                    </div>
+                    <div class="tech-stack-item">
+                        <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL">
+                        <h4>PostgreSQL</h4>
+                        <p>Advanced open-source database, managing user data, workout history, and performance analytics.</p>
+                    </div>
+                    <div class="tech-stack-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" alt="TensorFlow">
+                        <h4>TensorFlow</h4>
+                        <p>Open-source ML platform, powering our pose classification and exercise form analysis models.</p>
+                    </div>
+                    <div class="tech-stack-item">
+                        <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker">
+                        <h4>Docker</h4>
+                        <p>Containerization platform ensuring consistent deployment and scalability across different environments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about" class="about">
         <h2>About the Project</h2>
         <p>
@@ -160,7 +388,7 @@
 
     <section id="members" class="members">
         <div class="members-container">
-            <h2 class="members-title">Project Members</h2>
+            <h2 class="members-title">Team Members</h2>
             <div class="members-grid">
                 <div class="member-card">
                     <h3 class="member-name">Efe İlhan</h3>

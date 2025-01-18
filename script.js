@@ -31,6 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const membersTitle = document.querySelector('.members-title');
     let isExpanded = false;
 
+    // Function to shuffle array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Function to reorder member cards
+    function reorderMemberCards() {
+        const cardsArray = Array.from(memberCards);
+        const shuffledCards = shuffleArray([...cardsArray]);
+        
+        // Remove all cards from grid
+        cardsArray.forEach(card => {
+            card.classList.remove('visible');
+            card.remove();
+        });
+        
+        // Append cards in new order and animate them
+        shuffledCards.forEach((card, index) => {
+            membersGrid.appendChild(card);
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 150);
+        });
+    }
+
     const membersObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !isExpanded) {
@@ -38,11 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 membersGrid.style.opacity = '1';
                 membersGrid.style.transform = 'translateY(0)';
                 
-                memberCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, index * 150);
-                });
+                // Reorder and animate cards
+                reorderMemberCards();
             } else if (!entry.isIntersecting && entry.boundingClientRect.top > 0 && isExpanded) {
                 isExpanded = false;
                 membersGrid.style.opacity = '0';
