@@ -442,4 +442,61 @@ document.addEventListener('DOMContentLoaded', () => {
         screen.style.transitionDelay = `${index * 0.2}s`;
         showcaseObserver.observe(screen);
     });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const isOpen = navLinks.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        mobileMenuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', false);
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+
+    // Close mobile menu when clicking on a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', false);
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+
+    // Handle technical diagram scrolling
+    const technicalDiagrams = document.querySelectorAll('.technical-diagram');
+    
+    technicalDiagrams.forEach(diagram => {
+        const checkScroll = () => {
+            const { scrollLeft, scrollWidth, clientWidth } = diagram;
+            
+            // Check if scrollable
+            if (scrollWidth > clientWidth) {
+                // Add scroll-start class if not at the start
+                diagram.classList.toggle('scroll-start', scrollLeft > 0);
+                
+                // Add scroll-end class if not at the end
+                diagram.classList.toggle('scroll-end', 
+                    scrollLeft < (scrollWidth - clientWidth - 1));
+            }
+        };
+
+        // Initial check
+        checkScroll();
+        
+        // Check on scroll
+        diagram.addEventListener('scroll', checkScroll);
+        
+        // Check on window resize
+        window.addEventListener('resize', checkScroll);
+    });
 }); 

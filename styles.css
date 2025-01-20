@@ -1397,10 +1397,6 @@ footer {
     background: var(--section-background);
 }
 
-[data-theme="light"] .how-it-works {
-    background: linear-gradient(to bottom, #fff, #f8fafc);
-}
-
 .workflow-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -1419,36 +1415,6 @@ footer {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="light"] .workflow-step {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.workflow-step:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.workflow-step h3 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.workflow-step h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 2px;
-    background: var(--gradient-1);
-    border-radius: 2px;
-}
-
 .technical-diagram {
     background: rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -1458,33 +1424,12 @@ footer {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     overflow-x: auto;
-}
-
-[data-theme="light"] .technical-diagram {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: var(--shadow-sm);
+    -webkit-overflow-scrolling: touch;
 }
 
 .horizontal-flow {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: max-content;
-    min-width: 100%;
-    padding: 1rem;
-}
-
-.flow-container {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.flow-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 2rem;
     padding: 1rem;
     width: max-content;
@@ -1505,137 +1450,59 @@ footer {
     box-shadow: var(--shadow-md);
 }
 
-.flow-item.wide {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.item-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.item-header i {
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.item-header p {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-[data-theme="light"] .flow-item {
-    background: linear-gradient(135deg, var(--accent-color-1), var(--primary-color));
-    border: none;
-}
-
-.flow-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.flow-item i {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: white;
-}
-
-.flow-item p {
-    color: white;
-    font-weight: 600;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    letter-spacing: -0.3px;
-}
-
-.flow-item small {
-    display: block;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-}
-
-/* Flow Arrows */
 .flow-arrow {
     display: flex;
     align-items: center;
     color: var(--text-color);
     font-size: 1.25rem;
     flex: 0 0 auto;
+    padding: 0 1rem;
 }
 
-[data-theme="light"] .flow-arrow {
-    color: var(--accent-color-1);
-}
-
-.flow-arrow i {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Sub Items */
-.sub-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.sub-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.sub-item:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
-}
-
-.sub-item i {
+.technical-description {
     font-size: 1rem;
-    margin: 0;
-    flex-shrink: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-top: 1.5rem;
 }
 
-.sub-item p {
-    margin: 0;
-    font-size: 0.9rem;
-    text-align: left;
-}
+/* Responsive adjustments for workflow section */
+@media (max-width: 1024px) {
+    .how-it-works {
+        padding: 4rem 2rem;
+    }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .flow-row {
-        flex-wrap: wrap;
+    .workflow-step {
+        padding: 2rem;
+    }
+
+    .technical-diagram {
+        padding: 1.5rem;
     }
 
     .flow-item {
-        width: calc(50% - 2rem);
-    }
-
-    .sub-items {
-        grid-template-columns: repeat(2, 1fr);
+        min-width: 180px;
+        padding: 1.25rem;
     }
 }
 
 @media (max-width: 768px) {
-    .technical-diagram {
-        padding: 1rem;
+    .how-it-works {
+        padding: 3rem 1rem;
     }
 
-    .horizontal-flow,
-    .flow-row {
+    .workflow-step {
+        padding: 1.5rem;
+    }
+
+    .technical-diagram {
+        padding: 1rem;
+        margin: 0 -1rem;
+        width: calc(100% + 2rem);
+        border-radius: 0;
+    }
+
+    .horizontal-flow {
         gap: 1rem;
         padding: 0.5rem;
     }
@@ -1643,102 +1510,90 @@ footer {
     .flow-item {
         min-width: 160px;
         padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .flow-item i {
+        font-size: 1.25rem;
+    }
+
+    .flow-item p {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+    }
+
+    .flow-item small {
+        font-size: 0.8rem;
     }
 
     .flow-arrow {
         font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .technical-description {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        padding: 0 1rem;
     }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(5px);
-    }
-} 
-
-/* Ensure proper scrolling behavior */
+/* Improved scrollbar for technical diagrams */
 .technical-diagram::-webkit-scrollbar {
-    height: 8px;
-}
-
-.technical-diagram::-webkit-scrollbar-track {
+    height: 6px;
     background: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
 }
 
 .technical-diagram::-webkit-scrollbar-thumb {
     background: var(--primary-color);
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 .technical-diagram::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color-1);
 }
 
-/* S-shaped flow layout */
-.s-flow {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    width: 100%;
-    padding: 1rem;
+/* Add scroll indicators */
+.technical-diagram::before,
+.technical-diagram::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.s-flow .flow-item {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 300px;
+.technical-diagram::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
 }
 
-.s-flow .flow-arrow {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.technical-diagram::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
 }
 
-.s-flow .flow-arrow.right {
-    justify-content: flex-end;
+.technical-diagram.scroll-start::before,
+.technical-diagram.scroll-end::after {
+    opacity: 1;
 }
 
-.s-flow .flow-arrow.left {
-    justify-content: flex-start;
+/* Ensure proper spacing for flow items */
+.flow-item i {
+    margin-bottom: 0.75rem;
 }
 
-.s-flow .flow-arrow.down {
-    height: 100%;
-    flex-direction: column;
+.flow-item p {
+    margin: 0.5rem 0;
 }
 
-.s-flow .flow-arrow.down i {
-    transform: rotate(90deg);
+.flow-item small {
+    margin-top: 0.25rem;
 }
-
-.s-flow .flow-arrow.up {
-    height: 100%;
-    flex-direction: column;
-}
-
-.s-flow .flow-arrow.up i {
-    transform: rotate(-90deg);
-}
-
-@media (max-width: 1200px) {
-    .s-flow {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .s-flow {
-        grid-template-columns: 1fr;
-    }
-} 
 
 /* Flow Grid Layout */
 .flow-grid {
@@ -1874,15 +1729,17 @@ footer {
 
 @media (max-width: 768px) {
     .tech-stack-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0;
     }
 
     .tech-stack-item {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .tech-stack-item img {
-        height: 50px;
+        max-width: 60px;
     }
 } 
 
@@ -2178,5 +2035,277 @@ footer {
     
     .screen-content {
         padding: 1rem;
+    }
+} 
+
+/* Mobile menu button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 400px;
+        background: var(--navbar-bg-dark);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        padding: 2rem;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        margin: 1rem 0;
+        font-size: 1.25rem;
+    }
+
+    .nav-content {
+        padding: 0 1.5rem;
+    }
+}
+
+/* Responsive Hero Section */
+@media (max-width: 768px) {
+    .hero {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .cta-button, .secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .showcase-slider {
+        margin: 2rem 0;
+    }
+}
+
+/* Responsive Features Section */
+@media (max-width: 768px) {
+    .features {
+        padding: 3rem 1rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Responsive Technology Section */
+@media (max-width: 768px) {
+    .technology {
+        padding: 3rem 1rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .tech-card {
+        padding: 1.5rem;
+    }
+
+    .neural-network {
+        transform: scale(0.8);
+        margin: 1rem -1rem;
+    }
+
+    .streaming-container {
+        transform: scale(0.8);
+        margin: 1rem -1rem;
+    }
+}
+
+/* Responsive How It Works Section */
+@media (max-width: 768px) {
+    .how-it-works {
+        padding: 3rem 1rem;
+    }
+
+    .workflow-container {
+        padding: 0;
+    }
+
+    .workflow-step {
+        padding: 1.5rem;
+    }
+
+    .horizontal-flow {
+        padding: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .flow-item {
+        min-width: 200px;
+        padding: 1rem;
+    }
+}
+
+/* Responsive Tech Stack Grid */
+@media (max-width: 768px) {
+    .tech-stack-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .tech-stack-item {
+        padding: 1rem;
+    }
+
+    .tech-stack-item img {
+        max-width: 60px;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (max-width: 768px) {
+    .nav-button, 
+    .gallery-button,
+    .theme-toggle,
+    .cta-button,
+    .secondary-button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .nav-dot,
+    .gallery-dot {
+        min-height: 12px;
+        min-width: 12px;
+        margin: 0 8px;
+    }
+}
+
+/* Improved scrollbar for touch devices */
+@media (max-width: 768px) {
+    .technical-diagram::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .technical-diagram::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+    }
+}
+
+/* Responsive images */
+@media (max-width: 768px) {
+    .screen-image,
+    .tech-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+    h1 { font-size: clamp(2rem, 8vw, 2.5rem); }
+    h2 { font-size: clamp(1.75rem, 6vw, 2rem); }
+    h3 { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+    p { font-size: clamp(0.875rem, 3vw, 1rem); }
+}
+
+/* Future Development Section */
+.future-development .horizontal-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.future-development .flow-item {
+    min-width: unset;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 1.5rem;
+}
+
+.future-development .flow-item i {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.future-development .flow-item p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .future-development .horizontal-flow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .future-development .horizontal-flow {
+        display: flex;
+        grid-template-columns: unset;
+        width: max-content;
+    }
+
+    .future-development .flow-item {
+        min-width: 200px;
+        flex: 0 0 auto;
+    }
+
+    .future-development .technical-diagram {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 } 
