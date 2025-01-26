@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const layers = Array.from(neuralNetwork.querySelectorAll('.layer'));
         const neurons = neuralNetwork.querySelectorAll('.neuron');
         const connections = [];
-        const connectionMap = new Map(); // Map to store connections for each neuron
+        const connectionMap = new Map();
 
         // Create connections between neurons
         layers.forEach((layer, layerIndex) => {
@@ -113,30 +113,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         const connection = document.createElement('div');
                         connection.className = 'connection';
                         
-                        // Calculate positions
-                        const rect1 = currentNeuron.getBoundingClientRect();
-                        const rect2 = nextNeuron.getBoundingClientRect();
+                        // Calculate positions relative to the neural network container
+                        const currentRect = currentNeuron.getBoundingClientRect();
+                        const nextRect = nextNeuron.getBoundingClientRect();
                         const networkRect = neuralNetwork.getBoundingClientRect();
 
-                        const x1 = rect1.left + rect1.width / 2 - networkRect.left;
-                        const y1 = rect1.top + rect1.height / 2 - networkRect.top;
-                        const x2 = rect2.left + rect2.width / 2 - networkRect.left;
-                        const y2 = rect2.top + rect2.height / 2 - networkRect.top;
+                        // Calculate center points
+                        const x1 = currentRect.left + (currentRect.width / 2) - networkRect.left;
+                        const y1 = currentRect.top + (currentRect.height / 2) - networkRect.top;
+                        const x2 = nextRect.left + (nextRect.width / 2) - networkRect.left;
+                        const y2 = nextRect.top + (nextRect.height / 2) - networkRect.top;
 
                         // Calculate angle and length
                         const angle = Math.atan2(y2 - y1, x2 - x1);
                         const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
-                        // Set connection style
+                        // Position and rotate the connection
                         connection.style.width = `${length}px`;
                         connection.style.left = `${x1}px`;
                         connection.style.top = `${y1}px`;
                         connection.style.transform = `rotate(${angle}rad)`;
+                        connection.style.transformOrigin = '0 50%';
 
                         neuralNetwork.appendChild(connection);
                         connections.push(connection);
 
-                        // Store connections in both directions
                         connectionMap.get(currentNeuron).forward.push({
                             connection,
                             neuron: nextNeuron
@@ -148,6 +149,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             }
+        });
+
+        // Update connections on window resize
+        window.addEventListener('resize', () => {
+            connections.forEach(connection => {
+                const [fromNeuron, toNeuron] = Array.from(connectionMap.entries())
+                    .find(([_, data]) => 
+                        data.forward.some(c => c.connection === connection) || 
+                        data.backward.some(c => c.connection === connection)
+                    )[1].forward[0] || [null, null];
+
+                if (fromNeuron && toNeuron) {
+                    const currentRect = fromNeuron.getBoundingClientRect();
+                    const nextRect = toNeuron.getBoundingClientRect();
+                    const networkRect = neuralNetwork.getBoundingClientRect();
+
+                    const x1 = currentRect.left + (currentRect.width / 2) - networkRect.left;
+                    const y1 = currentRect.top + (currentRect.height / 2) - networkRect.top;
+                    const x2 = nextRect.left + (nextRect.width / 2) - networkRect.left;
+                    const y2 = nextRect.top + (nextRect.height / 2) - networkRect.top;
+
+                    const angle = Math.atan2(y2 - y1, x2 - x1);
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+                    connection.style.width = `${length}px`;
+                    connection.style.left = `${x1}px`;
+                    connection.style.top = `${y1}px`;
+                    connection.style.transform = `rotate(${angle}rad)`;
+                }
+            });
         });
 
         let isAnimating = false;
@@ -434,43 +465,52 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -100px 0px'
     });
 
-    // Observe showcase title
-    showcaseObserver.observe(showcaseTitle);
+    // Observe showcase title if it exists
+    if (showcaseTitle) {
+        showcaseObserver.observe(showcaseTitle);
+    }
 
-    // Observe each screen with a delay
-    showcaseScreens.forEach((screen, index) => {
-        screen.style.transitionDelay = `${index * 0.2}s`;
-        showcaseObserver.observe(screen);
-    });
+    // Observe each screen with a delay if they exist
+    if (showcaseScreens.length > 0) {
+        showcaseScreens.forEach((screen, index) => {
+            screen.style.transitionDelay = `${index * 0.2}s`;
+            showcaseObserver.observe(screen);
+        });
+    }
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-
-    mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const isOpen = navLinks.classList.contains('active');
-        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-        mobileMenuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', false);
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-
-    // Close mobile menu when clicking on a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileMenuBtn.setAttribute('aria-expanded', false);
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    
+    if (mobileMenuBtn && navLinks) {
+        // Add menu icon
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i><i class="fas fa-times"></i>';
+        
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
-    });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 
     // Handle technical diagram scrolling
     const technicalDiagrams = document.querySelectorAll('.technical-diagram');
